@@ -144,7 +144,7 @@ function App() {
 						>
 							Pull Until 5*
 						</Button>
-						<p style={{marginTop: "2px", fontSize: "13px"}}>Note: 5* Pity is taken into account.</p>
+						<p style={{marginTop: "2px", fontSize: "13px"}}>Note: <b>Soft Pity</b> and 5* Pity are taken into account.</p>
 
 						<p>№ of Pulls Taken: {output1}</p>
 						<p>Average: {isNaN(avg1) ? "" : avg1}</p>
