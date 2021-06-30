@@ -94,7 +94,7 @@ export const gacha2 = () => {
         }
 
         // If 4*
-        if (pullIndex >= 6 && pullIndex < 56)
+        else if (pullIndex >= 6 && pullIndex < 56)
         {
             num_of_four_stars++
         }
