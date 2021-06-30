@@ -7,6 +7,8 @@ import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 import { useState } from 'react'
 import { gacha1 } from './gacha'
@@ -30,7 +32,6 @@ function App() {
 	var num5Star = data3.filter(x => x === "5*").length
 	var num4Star = data3.filter(x => x === "4*").length
 	var num3Star = data3.filter(x => x === "3*").length
-
 
 	const reset = () => {
 		setOutput1()
@@ -90,30 +91,36 @@ function App() {
 
 				<section style={{height: "30px"}}></section>
 
-				<TextField
-					id="primos"
-					label="No. of Primogems"
-					type="number"
-					value={primos}
-					onChange={(e) => setPrimos(e.target.value)}
-					InputLabelProps={{
-						shrink: true,
-					}}
-				/>
-				<span> </span>
-				<TextField
-					id="fates"
-					label="No. of Fates"
-					type="number"
-					value={fates}
-					onChange={(e) => setFates(e.target.value)}
-					InputLabelProps={{
-						shrink: true,
-					}}
-				/>
-				<p>Number of Wishes: {(isNaN(primos) || isNaN(fates)) ? "" : Math.floor(primos / 160 + +fates)}</p>
+				<Card variant="outlined">
+					<CardContent>
 
-				<section style={{height: "80px"}}></section>
+					<TextField
+						id="primos"
+						label="No. of Primogems"
+						type="number"
+						value={primos}
+						onChange={(e) => setPrimos(e.target.value)}
+						InputLabelProps={{
+							shrink: true,
+						}}
+					/>
+					<span> </span>
+					<TextField
+						id="fates"
+						label="No. of Fates"
+						type="number"
+						value={fates}
+						onChange={(e) => setFates(e.target.value)}
+						InputLabelProps={{
+							shrink: true,
+						}}
+					/>
+					<p style={{marginBottom: "-5px"}}>Number of Wishes: {(isNaN(primos) || isNaN(fates)) ? "" : Math.floor(primos / 160 + +fates)}</p>
+
+					</CardContent>
+				</Card>
+
+				<section style={{height: "50px"}}></section>
 
 				<Button 
 					onClick={reset} 
@@ -126,111 +133,123 @@ function App() {
 
 				<section style={{height: "30px"}}></section>
 
-				<>
-					<Button 
-						onClick={pull1} 
-						variant="outlined"
-						color="primary"
-						style={{fontSize: "20px"}}
-					>
-						Pull Until 5*
-					</Button>
-					<p style={{marginTop: "2px", fontSize: "13px"}}>Note: 5* Pity is taken into account.</p>
+				<Card variant="outlined">
+					<CardContent>
 
-					<p>№ of Pulls Taken: {output1}</p>
-					<p>Average: {isNaN(avg1) ? "" : avg1}</p>
-
-					<Accordion style={{width: "300px"}}>
-						<AccordionSummary
-							expandIcon={<ExpandMoreIcon />}
+						<Button 
+							onClick={pull1} 
+							variant="outlined"
+							color="primary"
+							style={{fontSize: "20px"}}
 						>
-						<Typography>Pull History</Typography>
-						</AccordionSummary>
-						<AccordionDetails>
-							<p>{data1.join(', ').toString()}</p>
-						</AccordionDetails>
-					</Accordion>
-				</>
+							Pull Until 5*
+						</Button>
+						<p style={{marginTop: "2px", fontSize: "13px"}}>Note: 5* Pity is taken into account.</p>
+
+						<p>№ of Pulls Taken: {output1}</p>
+						<p>Average: {isNaN(avg1) ? "" : avg1}</p>
+
+						<Accordion style={{width: "300px"}}>
+							<AccordionSummary
+								expandIcon={<ExpandMoreIcon />}
+							>
+							<Typography>Pull History</Typography>
+							</AccordionSummary>
+							<AccordionDetails>
+								<p>{data1.join(', ').toString()}</p>
+							</AccordionDetails>
+						</Accordion>
+
+					</CardContent>
+				</Card>
 
 				<section style={{height: "80px"}}></section>
 
-				<>
-					<Button 
-						onClick={pull2} 
-						variant="outlined"
-						color="primary"
-						style={{fontSize: "20px"}}
-					>
-						10× Pull
-					</Button>
-					<p style={{marginTop: "2px", fontSize: "13px"}}>Note: Only 4* Pity is taken into account.</p>
+				<Card variant="outlined">
+					<CardContent>
 
-					<p>№ of 5*: {output2.fiveStars}</p>
-					<p>№ of 4*: {output2.fourStars}</p>
-					<p>№ of 3*: {output2.threeStars}</p>
-
-					<Accordion style={{width: "300px"}}>
-						<AccordionSummary
-							expandIcon={<ExpandMoreIcon />}
+						<Button 
+							onClick={pull2} 
+							variant="outlined"
+							color="primary"
+							style={{fontSize: "20px"}}
 						>
-						<Typography>Pull History (5* / 4* / 3*)</Typography>
-						</AccordionSummary>
-						<AccordionDetails>
-							<p>{listData2}</p>
-						</AccordionDetails>
-					</Accordion>
-				</>
+							10× Pull
+						</Button>
+						<p style={{marginTop: "2px", fontSize: "13px"}}>Note: Only 4* Pity is taken into account.</p>
+
+						<p>№ of 5*: {output2.fiveStars}</p>
+						<p>№ of 4*: {output2.fourStars}</p>
+						<p>№ of 3*: {output2.threeStars}</p>
+
+						<Accordion style={{width: "300px"}}>
+							<AccordionSummary
+								expandIcon={<ExpandMoreIcon />}
+							>
+							<Typography>Pull History (5* / 4* / 3*)</Typography>
+							</AccordionSummary>
+							<AccordionDetails>
+								<p>{listData2}</p>
+							</AccordionDetails>
+						</Accordion>
+
+					</CardContent>
+				</Card>
 
 				<section style={{height: "80px"}}></section>
 
-				<>
-					<Button 
-						onClick={pull3} 
-						variant="outlined"
-						color="primary"
-						style={{fontSize: "20px"}}
-					>
-						1× Pull
-					</Button>
-					<p style={{marginTop: "2px", fontSize: "13px"}}>Note: No pity is taken into account.</p>
+				<Card variant="outlined">
+					<CardContent>
 
-					<p>You got: {output3}</p>
-
-					<p>№ of 5*: {num5Star}</p>
-					<p>№ of 4*: {num4Star}</p>
-					<p>№ of 3*: {num3Star}</p>
-
-					<p>(to save you the pain, 
 						<Button 
-							onClick={pull3100} 
+							onClick={pull3} 
 							variant="outlined"
 							color="primary"
-							style={{fontSize: "13px", marginLeft: "10px", padding: "1px"}}
+							style={{fontSize: "20px"}}
 						>
-							100× Pull
+							1× Pull
 						</Button>
-						<Button 
-							onClick={pull31000} 
-							variant="outlined"
-							color="primary"
-							style={{fontSize: "13px", marginLeft: "10px", marginRight: "3px", padding: "1px"}}
-						>
-							1000× Pull
-						</Button>
-					)
-					</p>
+						<p style={{marginTop: "2px", fontSize: "13px"}}>Note: No pity is taken into account.</p>
 
-					<Accordion style={{width: "300px"}}>
-						<AccordionSummary
-							expandIcon={<ExpandMoreIcon />}
-						>
-						<Typography>Pull History<br/>(open at your own risk)</Typography>
-						</AccordionSummary>
-						<AccordionDetails>
-							<p>{data3.join(', ').toString()}</p>
-						</AccordionDetails>
-					</Accordion>
-				</>
+						<p>You got: {output3}</p>
+
+						<p>№ of 5*: {num5Star}</p>
+						<p>№ of 4*: {num4Star}</p>
+						<p>№ of 3*: {num3Star}</p>
+
+						<p>(to save you the pain, 
+							<Button 
+								onClick={pull3100} 
+								variant="outlined"
+								color="primary"
+								style={{fontSize: "13px", marginLeft: "10px", padding: "1px"}}
+							>
+								100× Pull
+							</Button>
+							<Button 
+								onClick={pull31000} 
+								variant="outlined"
+								color="primary"
+								style={{fontSize: "13px", marginLeft: "10px", marginRight: "3px", padding: "1px"}}
+							>
+								1000× Pull
+							</Button>
+						)
+						</p>
+
+						<Accordion style={{width: "300px"}}>
+							<AccordionSummary
+								expandIcon={<ExpandMoreIcon />}
+							>
+							<Typography>Pull History<br/>(open at your own risk)</Typography>
+							</AccordionSummary>
+							<AccordionDetails>
+								<p>{data3.join(', ').toString()}</p>
+							</AccordionDetails>
+						</Accordion>
+
+					</CardContent>
+				</Card>
 
 				<section style={{height: "100px"}}></section>
 

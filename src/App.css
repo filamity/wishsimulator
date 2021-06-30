@@ -1,18 +1,24 @@
 @font-face {
-	font-family: "Genshin";
-	src: url("./assets/fonts/genshin.ttf");
+	font-family: "Inter";
+	src: url("./assets/fonts/Inter-ExtraBold.ttf");
+	font-weight: bolder
+}
+@font-face {
+	font-family: "Inter";
+	src: url("./assets/fonts/Inter-Light.ttf");
+	font-weight: lighter;
+}
+@font-face {
+	font-family: "Inter";
+	src: url("./assets/fonts/Inter-Bold.ttf");
+	font-weight: bold;
+}
+@font-face {
+	font-family: "Inter";
+	src: url("./assets/fonts/Inter-Regular.ttf");
 }
 
 * {
-	font-family: "Genshin";
+	font-family: "Inter";
 	list-style-type: none;
 }
-/* 
-.MuiInputBase-input, .MuiInput-input {
-	padding: 0px 0px 7px !important;
-}
-
-#primos {
-	vertical-align: text-top;
-} */
-
